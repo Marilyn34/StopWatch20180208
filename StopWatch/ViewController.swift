@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func up() {
+    @objc func up() {
         counter += 0.01
         label.text = String(format: "%.2f", counter)
     }
