@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var label: UILabel!
+    @IBOutlet var perfLabel: UILabel!
     
     var counter: Float = 0.0
 
@@ -33,23 +34,37 @@ class ViewController: UIViewController {
                                         userInfo: nil,
                                         repeats: true)
         }
-        
+        perfLabel.text = ""
     }
     
     @IBAction func stop() {
         if timer.isValid {
             timer.invalidate()
+            self.hantei()
         }
     }
     
     @IBAction func reset() {
         counter = 0.0
         label.text = "0.00"
+        perfLabel.text = ""
     }
     
     @objc func up() {
         counter += 0.01
         label.text = String(format: "%.2f", counter)
+    }
+    
+    @objc func hantei() {
+        if counter <= 10.2 && counter >= 9.8 {
+            perfLabel.text = "PERFECT!"
+        } else if counter <= 10.3 && counter >= 9.7 {
+            perfLabel.text = "GREAT"
+        } else if counter <= 10.5 && counter >= 9.5 {
+            perfLabel.text = "GOOD"
+        } else {
+            perfLabel.text = "BAD"
+        }
     }
 }
 
