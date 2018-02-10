@@ -42,6 +42,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func reset() {
+        counter = 0.0
+        label.text = "0.00"
+    }
+    
     @objc func up() {
         counter += 0.01
         label.text = String(format: "%.2f", counter)
